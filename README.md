@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2074e2f7-22aa-4119-8715-976802d973b8/deploy-status)](https://app.netlify.com/projects/steady-sunshine-aaff94/deploys)
+
 # inscripcionConVUE
 
 This template should help get you started developing with Vue 3 in Vite.

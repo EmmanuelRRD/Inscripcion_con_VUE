@@ -4,12 +4,12 @@ import { reactive, computed, ref, watch } from 'vue';
 const alumnosInscritos = ref([]); //El objeto que guardara todos los alumnos
 
 const abrir = () => {
-  localStorage.setItem(
-    'alumnosInscritos',
-    JSON.stringify(alumnosInscritos.value)
-  )
+    localStorage.setItem(
+        'alumnosInscritos',
+        JSON.stringify(alumnosInscritos.value)
+    )
 
-  window.open('/alumnos-inscritos', '_blank')
+    window.open('/alumnos-inscritos', '_blank')
 }
 
 const a = () => {
@@ -169,68 +169,22 @@ const actividadesExtra = [
                             <hr>
                             <div class="d-grid col-md-3 text-center">
                                 <button type="submit" class="btn btn-primary btn-lg">
-                                    Enviar
+                                    Agregar alumno
                                 </button>
                             </div>
-
-
-
 
                         </form>
 
                         <div class="d-grid col-md-3 text-center mt-2">
                             <button v-on:click="abrir" class="btn btn-primary btn-lg">
-                                Alumnos inscritos
+                                Ver alumnos inscritos
                             </button>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
-        <hr>
-        <h1>Alumnos inscritos</h1>
 
-        <table class="table table-striped mt-3">
-            <thead class="table-dark">
-                <tr>
-                    <th>Nombre</th>
-                    <th>No. Control</th>
-                    <th>Carrera</th>
-                    <th>Semestre</th>
-                    <th>Materias Inscritas</th>
-                    <th>Actividades Extraescolares</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="alumno in alumnosInscritos" :key="alumno.noControl">
-                    <td>
-                        {{ alumno.nombres }} {{ alumno.pApellido }} {{ alumno.sApellido }}
-                    </td>
-                    <td>{{ alumno.noControl }}</td>
-                    <td>{{ alumno.carrera }}</td>
-                    <td>{{ alumno.semestre }}</td>
-                    <td>
-                        <ul class="mb-0 ps-3">
-                            <li v-for="m in alumno.materiasInscritas" :key="m.nombre">
-                                {{ m.nombre }}
-                                <span v-if="m.especialidad" class="text-primary">
-                                    (Especialidad)
-                                </span>
-                            </li>
-                        </ul>
-                    </td>
-                    <td>
-                        <ul class="mb-0 ps-3">
-                            <li v-for="m in alumno.actividadesExtraescolares" :key="m">
-                                {{ m }}
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
 
