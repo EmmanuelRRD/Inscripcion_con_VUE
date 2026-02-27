@@ -30,7 +30,8 @@ const alumnoInscrito = reactive({//El valor unitario que se va a modificar
   edad: 17,
   semestre: 1,
   carrera: "ISC",
-  materiasInscritas: []
+  materiasInscritas: [],
+  actividadesExtraescolares: []
 });
 
 watch(() => alumnoInscrito.carrera, () => {//Detecta los cambios --> watch(origen, callback)
@@ -51,15 +52,23 @@ const carreras = [{
     { nombre: "DEVOPS", especialidad: true }]
 }, {
   nombre: "Alimentarias", carga: [
-    { nombre: "Comida1", especialidad: false },
-    { nombre: "Comida2", especialidad: false },
-    { nombre: "Comida3", especialidad: true }]
+    { nombre: "Almuerzo", especialidad: false },
+    { nombre: "Comida", especialidad: false },
+    { nombre: "Cena", especialidad: true }]
 }, {
   nombre: "Administracion", carga: [
     { nombre: "Recreo1", especialidad: false },
     { nombre: "Recreo2", especialidad: true },
     { nombre: "Recreo3", especialidad: true }]
 }];
+
+const actividadesExtra = [
+  "Ajedrez",
+  "Arte",
+  "Voleibol",
+  "Natación",
+  "Hackatón"
+];
 </script>
 
 <template>
@@ -134,6 +143,18 @@ const carreras = [{
                   </span>
                 </label>
               </div>
+
+              <hr>
+              <h4 class="text-center">Actividades extraescolares</h4>
+
+              <div v-for="materia in actividadesExtra" :key="materia" class="form-check">
+                <input class="form-check-input" type="checkbox" :value="materia"
+                  v-model="alumnoInscrito.actividadesExtraescolares" :id="materia">
+
+                <label class="form-check-label" :for="materia">
+                  {{ materia }}
+                </label>
+              </div>
               <hr>
               <div class="d-grid col-md-3 text-center">
                 <button type="submit" class="btn btn-primary btn-lg">
@@ -159,6 +180,7 @@ const carreras = [{
           <th>Carrera</th>
           <th>Semestre</th>
           <th>Materias Inscritas</th>
+          <th>Actividades Extraescolares</th>
         </tr>
       </thead>
       <tbody>
@@ -176,6 +198,13 @@ const carreras = [{
                 <span v-if="m.especialidad" class="text-primary">
                   (Especialidad)
                 </span>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="mb-0 ps-3">
+              <li v-for="m in alumno.actividadesExtraescolares" :key="m">
+                {{ m }}
               </li>
             </ul>
           </td>
